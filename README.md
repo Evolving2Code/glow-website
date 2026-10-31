@@ -1,0 +1,47 @@
+# Glow LED Lighting — glowledlighting.com
+
+Next.js (App Router) · Tailwind CSS v4 · shadcn/ui primitives (Radix) · Framer Motion.
+
+```bash
+npm install
+npm run dev       # http://localhost:3000
+npm run build && npm start
+```
+
+## Page architecture (`app/page.tsx`)
+
+| § | Section | File |
+|---|---------|------|
+| — | Glass nav, ⌘K search, scroll-blur, magnetic CTA | `components/site/nav.tsx`, `command-search.tsx` |
+| — | Hero, macro-metrics, pointer-lit visual zone | `components/site/hero.tsx` |
+| 01 | Photometric playground (point-by-point heatmap) | `components/site/photometric-playground.tsx`, `lib/photometrics.ts` |
+| 02 | Product suite bento | `components/site/product-bento.tsx` |
+| 03 | VE calculator | `components/site/ve-calculator.tsx`, `lib/calculator.ts` |
+| 04 | Glow Promise trust matrix + testimonial | `components/site/trust-matrix.tsx` |
+| 05 | Terminal quote hub → `POST /api/quote` | `components/site/quote-hub.tsx`, `app/api/quote/route.ts` |
+
+Design tokens live in `app/globals.css` (`@theme`): obsidian surfaces, steel structure, 4000K `glow` accent.
+All copy, specs and asset slots live in `lib/content.ts`.
+
+## Assets required
+
+Every visual is an `AssetSlot` that renders its production brief until a file is supplied.
+Drop files in `public/assets/` and set `src` (e.g. `"/assets/hero.avif"`) on the matching entry in `lib/content.ts`.
+
+| ID | Slot | Min size |
+|----|------|----------|
+| A-01 | Hero — distribution centre, lights on (still or loop) | 2400 × 3000 |
+| P-01 | Linear high bay studio render | 1600 × 1200 |
+| P-02 | UFO high bay studio render | 1200 × 1200 |
+| P-03 | Architectural linear in situ | 1600 × 900 |
+| P-04 | Vapor tight studio render | 1200 × 1200 |
+| P-05 | Sports/area night project photo | 2000 × 1000 |
+| C-01 | Case study project photo | 1600 × 2000 |
+
+## Quote delivery
+
+Set `QUOTE_WEBHOOK_URL` (see `.env.example`) to forward each validated lead as JSON to a CRM, Zapier/Make hook or Slack workflow. Without it, leads are logged server-side only.
+
+## Before launch
+
+`CONTENT_TO_VERIFY` in `lib/content.ts` lists every claim, spec and price that must be confirmed by Glow.
