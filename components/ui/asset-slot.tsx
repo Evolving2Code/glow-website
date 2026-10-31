@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { AssetSpec } from "@/lib/content";
 import { cn } from "@/lib/utils";
+import { LoopVideo } from "./loop-video";
 
 type AssetSlotProps = {
   spec: AssetSpec;
@@ -30,6 +31,22 @@ function CropMarks() {
  * and the exact asset requirements travel with the layout.
  */
 export function AssetSlot({ spec, className, density = "full", priority, sizes = "100vw", children, captionAlign = "spread" }: AssetSlotProps) {
+  if (spec.video) {
+    return (
+      <div className={cn("relative overflow-hidden bg-obsidian-950", className)}>
+        <LoopVideo
+          mp4={spec.video.mp4}
+          webm={spec.video.webm}
+          poster={spec.video.poster ?? spec.src}
+          alt={spec.alt ?? spec.title}
+          priority={priority}
+          sizes={sizes}
+        />
+        {children}
+      </div>
+    );
+  }
+
   if (spec.src) {
     return (
       <div className={cn("relative overflow-hidden", className)}>

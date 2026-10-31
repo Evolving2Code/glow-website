@@ -28,6 +28,16 @@ All copy, specs and asset slots live in `lib/content.ts`.
 Every visual is an `AssetSlot` that renders its production brief until a file is supplied.
 Drop files in `public/assets/` and set `src` (e.g. `"/assets/hero.avif"`) on the matching entry in `lib/content.ts`.
 
+Any slot can take a looping video instead (used for the hero):
+
+```ts
+video: { mp4: "/assets/hero.mp4", webm: "/assets/hero.webm", poster: "/assets/hero-poster.avif" },
+```
+
+The poster loads first; the video fades in, plays only while on screen and has a pause control.
+With reduced motion or Save-Data, only the poster shows. Export H.264 MP4, muted, ≤ 6 MB, with a poster
+frame taken from the first frame so the fade-in is seamless. A 9:16 clip crops cleanly into the 4:5 hero frame.
+
 | ID | Slot | Min size |
 |----|------|----------|
 | A-01 | Hero — distribution centre, lights on (still or loop) | 2400 × 3000 |

@@ -36,6 +36,8 @@ export type AssetSpec = {
   notes?: string;
   src?: string;
   alt?: string;
+  /** Looping background video. Takes precedence over `src`, which is used as the poster if `video.poster` is unset. */
+  video?: { mp4: string; webm?: string; poster?: string };
 };
 
 export const assets = {
@@ -44,13 +46,14 @@ export const assets = {
     title: "Hero — Distribution centre, lights on",
     width: 2400,
     height: 3000,
-    format: "AVIF/WebP still or 8s seamless MP4/WebM loop (H.264, ≤ 6 MB)",
+    format: "AVIF/WebP still, or 8s seamless MP4 loop (H.264, ≤ 6 MB) + poster frame",
     lighting:
       "Blue-hour or night exterior darkness, interior lit only by Glow high bays at 4000K. Deep blacks, no blown highlights on lenses.",
     subject:
       "One-point perspective down a main aisle of a 30–40 ft clear-height warehouse. Polished concrete floor reflecting the fixture rows. No people, no visible brand signage.",
     notes: "Leave the lower-left 40% calm — UI readouts overlay it.",
     src: undefined,
+    video: undefined,
     alt: "Warehouse aisle lit by Glow LED high bay fixtures",
   },
   highBay: {
