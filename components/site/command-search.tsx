@@ -109,7 +109,7 @@ export function CommandSearch({ className }: { className?: string }) {
               autoFocus
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Try “IP66”, “stadium”, “160 lm/W”…"
+              placeholder="Try “IP65”, “parking”, “200 lm/W”…"
               className="h-14 w-full bg-transparent text-[15px] text-ink placeholder:text-steel-500 focus:outline-none"
               role="combobox"
               aria-expanded

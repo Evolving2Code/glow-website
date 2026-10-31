@@ -43,9 +43,9 @@ frame taken from the first frame so the fade-in is seamless. A 9:16 clip crops c
 | A-01 | Hero — distribution centre, lights on (still or loop) | 2400 × 3000 |
 | P-01 | Linear high bay studio render | 1600 × 1200 |
 | P-02 | UFO high bay studio render | 1600 × 900 |
-| P-03 | Architectural linear in situ | 1600 × 900 |
+| P-03 | Office panels in situ | 1600 × 900 |
 | P-04 | Vapor tight studio render | 1600 × 1200 |
-| P-05 | Sports/area night project photo (subject centred, cropped to wide and tall) | 2000 × 2000 |
+| P-05 | Parking lot at night, pole-top area light (subject centred, cropped to wide and tall) | 2000 × 2000 |
 | C-01 | Case study project photo | 1600 × 2000 |
 
 ## Quote delivery

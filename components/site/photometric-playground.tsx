@@ -17,7 +17,7 @@ import {
 } from "@/lib/photometrics";
 import { cn, formatInt } from "@/lib/utils";
 
-const spaceKeys: SpaceKey[] = ["warehouse", "office", "stadium"];
+const spaceKeys: SpaceKey[] = ["warehouse", "office", "parking"];
 
 function useResults() {
   return React.useMemo(() => {

@@ -9,7 +9,7 @@
  * not a substitute for an IES-file photometric layout.
  */
 
-export type SpaceKey = "warehouse" | "office" | "stadium";
+export type SpaceKey = "warehouse" | "office" | "parking";
 export type SystemKey = "legacy" | "glow";
 
 export type FixtureSystem = {
@@ -48,33 +48,6 @@ const gridLayout = (cols: number, rows: number, h: number) => (w: number, d: num
       out.push({ x, y, h, ax: x, ay: y });
     }
   }
-  return out;
-};
-
-const stadiumLayout = (w: number, d: number) => {
-  const h = 80;
-  const poles = [
-    { x: w * 0.12, y: -18 },
-    { x: w * 0.5, y: -18 },
-    { x: w * 0.88, y: -18 },
-    { x: w * 0.12, y: d + 18 },
-    { x: w * 0.5, y: d + 18 },
-    { x: w * 0.88, y: d + 18 },
-  ];
-  const out: { x: number; y: number; h: number; ax: number; ay: number }[] = [];
-  poles.forEach((p) => {
-    for (let i = 0; i < 8; i++) {
-      const spreadX = ((i % 4) - 1.5) * (w * 0.07);
-      const reach = i < 4 ? 0.22 : 0.46;
-      out.push({
-        x: p.x,
-        y: p.y,
-        h,
-        ax: Math.min(w, Math.max(0, p.x + spreadX)),
-        ay: p.y < 0 ? d * reach : d - d * reach,
-      });
-    }
-  });
   return out;
 };
 
@@ -136,7 +109,7 @@ export const spaces: Record<SpaceKey, Space> = {
         fieldCondition: { depreciationMin: 0.65, depreciationMax: 0.95, failedRatio: 0.06 },
       },
       glow: {
-        name: "Glow 40W edge-lit panel",
+        name: "Glow 2×4 back-lit flat panel",
         watts: 40,
         lumens: 5000,
         cu: 0.76,
@@ -147,37 +120,37 @@ export const spaces: Record<SpaceKey, Space> = {
       },
     },
   },
-  stadium: {
-    key: "stadium",
-    label: "Stadium",
-    caption: "360 × 160 ft field · 6 poles · 80 ft mounting",
-    width: 360,
-    depth: 160,
-    mountHeight: 80,
-    hoursPerYear: 1200,
-    target: 75,
-    layout: stadiumLayout,
+  parking: {
+    key: "parking",
+    label: "Parking lot",
+    caption: "60,000 sq ft surface lot · 12 poles · 30 ft mounting",
+    width: 300,
+    depth: 200,
+    mountHeight: 30,
+    hoursPerYear: 4300,
+    target: 3,
+    layout: gridLayout(4, 3, 30),
     systems: {
       legacy: {
-        name: "1500W metal halide flood",
-        watts: 1650,
-        lumens: 155000,
-        cu: 0.5,
-        llf: 0.68,
-        exponent: 6,
-        cct: 4000,
+        name: "400W metal halide shoebox",
+        watts: 458,
+        lumens: 36000,
+        cu: 0.45,
+        llf: 0.65,
+        exponent: 1.1,
+        cct: 3700,
         cri: 65,
-        fieldCondition: { depreciationMin: 0.55, depreciationMax: 0.9, failedRatio: 0.06 },
+        fieldCondition: { depreciationMin: 0.5, depreciationMax: 0.9, failedRatio: 0.1 },
       },
       glow: {
-        name: "Glow 1000W LED sports flood",
-        watts: 1000,
-        lumens: 150000,
-        cu: 0.76,
+        name: "Glow area light, Type V",
+        watts: 160,
+        lumens: 24000,
+        cu: 0.75,
         llf: 0.9,
-        exponent: 5,
-        cct: 5000,
-        cri: 80,
+        exponent: 0.5,
+        cct: 4000,
+        cri: 70,
       },
     },
   },

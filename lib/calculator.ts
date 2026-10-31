@@ -1,4 +1,4 @@
-export type CalcSpaceKey = "warehouse" | "manufacturing" | "office" | "retail" | "sports";
+export type CalcSpaceKey = "warehouse" | "manufacturing" | "office" | "retail" | "site";
 
 export type CalcSpace = {
   key: CalcSpaceKey;
@@ -11,10 +11,10 @@ export type CalcSpace = {
 /** Indicative figures for the VE calculator. Replace with Glow's own program pricing. */
 export const calcSpaces: CalcSpace[] = [
   { key: "warehouse", label: "Warehouse", sqftPerFixture: 640, typicalUnitPrice: 289, fixture: "Linear high bay" },
-  { key: "manufacturing", label: "Manufacturing", sqftPerFixture: 480, typicalUnitPrice: 312, fixture: "UFO high bay" },
-  { key: "office", label: "Office", sqftPerFixture: 100, typicalUnitPrice: 149, fixture: "Architectural linear" },
-  { key: "retail", label: "Retail", sqftPerFixture: 90, typicalUnitPrice: 176, fixture: "Linear / downlight mix" },
-  { key: "sports", label: "Sports", sqftPerFixture: 1200, typicalUnitPrice: 1490, fixture: "LED sports flood" },
+  { key: "manufacturing", label: "Manufacturing", sqftPerFixture: 480, typicalUnitPrice: 312, fixture: "Round (UFO) high bay" },
+  { key: "office", label: "Office", sqftPerFixture: 100, typicalUnitPrice: 149, fixture: "2×4 back-lit flat panel" },
+  { key: "retail", label: "Retail", sqftPerFixture: 90, typicalUnitPrice: 176, fixture: "Panel / downlight mix" },
+  { key: "site", label: "Parking / site", sqftPerFixture: 5000, typicalUnitPrice: 429, fixture: "Pole-mounted area light" },
 ];
 
 export const VE_REDUCTION = 0.3;

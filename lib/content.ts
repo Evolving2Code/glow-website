@@ -22,7 +22,7 @@ export const heroMetrics = [
   { value: 60, suffix: "+", label: "Global suppliers", detail: "Vetted manufacturing partners" },
   { value: 30, suffix: "%", label: "Lower VE pricing", detail: "Against typical distributor spec" },
   { value: 0, prefix: "$", label: "Freight", detail: "Free shipping on every order" },
-  { value: 5, suffix: "", label: "Core suites", detail: "Industrial to arena-grade" },
+  { value: 5, suffix: "", label: "Core suites", detail: "Warehouse floor to parking lot" },
 ] as const;
 
 export type AssetSpec = {
@@ -78,16 +78,16 @@ export const assets = {
     src: undefined,
     alt: "Glow UFO high bay fixture",
   },
-  linear: {
+  panels: {
     id: "P-03",
-    title: "Architectural linear — in situ",
+    title: "Office panels — in situ",
     width: 1600,
     height: 900,
     format: "AVIF/WebP photograph",
-    lighting: "Continuous suspended runs over an open-plan office, dusk exterior",
-    subject: "Long-lens compression of linear runs, ceiling plane dominant",
+    lighting: "Back-lit 2×4 flat panels on, even 4000K, dusk outside the windows",
+    subject: "Open-plan office ceiling grid of flat panels, long lens, ceiling plane dominant",
     src: undefined,
-    alt: "Glow architectural linear fixtures suspended in an office",
+    alt: "Glow back-lit flat panels in an office ceiling",
   },
   vaporTight: {
     id: "P-04",
@@ -102,14 +102,14 @@ export const assets = {
   },
   area: {
     id: "P-05",
-    title: "Sports & area — night project photo",
+    title: "Area lighting — parking lot at night",
     width: 2000,
     height: 2000,
     format: "AVIF/WebP photograph",
-    lighting: "Night, field lit by Glow floods, visible beam control (no sky glow)",
-    subject: "Pole-top fixture cluster in the foreground, field falling away behind",
+    lighting: "Night, lot lit by pole-mounted area lights, crisp full-cutoff (no sky glow)",
+    subject: "Pole-top area light in the foreground, evenly lit lot falling away behind",
     src: undefined,
-    alt: "Stadium lit by Glow LED sports lighting",
+    alt: "Parking lot lit by Glow LED area lights",
   },
   caseStudy: {
     id: "C-01",
@@ -124,7 +124,7 @@ export const assets = {
   },
 } satisfies Record<string, AssetSpec>;
 
-export type SuiteKey = "high-bay" | "ufo" | "linear" | "vapor-tight" | "area";
+export type SuiteKey = "high-bay" | "ufo" | "panels" | "vapor-tight" | "area";
 
 export type Suite = {
   key: SuiteKey;
@@ -137,79 +137,107 @@ export type Suite = {
   asset: AssetSpec;
 };
 
-export const suites: Suite[] = [
+/**
+ * Suites mirror the supplier catalogue (costlesslighting.com). Spec values are
+ * quoted from those product listings; `sources` records where each came from.
+ */
+export const suites: (Suite & { sources: string[] })[] = [
   {
     key: "high-bay",
     index: "01",
     name: "Linear High Bays",
     tagline: "The workhorse of the clear-height building.",
     description:
-      "Wide-aisle and narrow-aisle optics engineered to put lumens on the rack face, not the ceiling deck. Field-selectable wattage and CCT let one SKU cover an entire distribution centre.",
+      "Linear and linear-adjustable high bays with rotatable optics to put lumens on the rack face, not the ceiling deck. Lumen output and colour temperature are field-selectable, so one SKU covers an entire distribution centre.",
     applications: ["Distribution", "Manufacturing", "Cold storage", "Big-box retail"],
     specs: [
-      { label: "Output", value: "12k – 45k lm" },
-      { label: "Efficacy", value: "Up to 160 lm/W" },
-      { label: "CCT", value: "4000 / 5000K" },
-      { label: "Controls", value: "0–10V · Occupancy" },
+      { label: "Output", value: "24.8k – 43.9k lm" },
+      { label: "CCT", value: "3K · 4K · 5K" },
+      { label: "Optics", value: "Rotatable" },
+      { label: "Controls", value: "0–10V · Sensor" },
     ],
     asset: assets.highBay,
+    sources: ["costlesslighting.com/product/linear-adjustable-high-bay-24797-to-43947-lumens-sensor-ready-lumen-and-kelvin-selectable/"],
   },
   {
     key: "ufo",
     index: "02",
-    name: "UFO High Bays",
+    name: "Round (UFO) High Bays",
     tagline: "Compact. Brutally efficient.",
     description:
-      "A die-cast round form factor that drops into existing metal-halide hook points for the fastest retrofit on the floor.",
-    applications: ["Gyms", "Workshops", "Retrofit"],
+      "Die-cast round high bays that hang from existing hook points for the fastest retrofit on the floor — field-selectable lumens and Kelvin, screw-in sensor-ready, in black or white.",
+    applications: ["Warehouses", "Gyms", "Workshops", "Retrofit"],
     specs: [
-      { label: "Output", value: "14k – 40k lm" },
-      { label: "Optic", value: "60° · 90° · 120°" },
+      { label: "Output", value: "16k – 47k lm" },
+      { label: "Efficacy", value: "Up to 200 lm/W" },
+      { label: "Ingress", value: "IP65" },
+      { label: "Input", value: "120–277V · 277–480V" },
     ],
     asset: assets.ufo,
+    sources: [
+      "costlesslighting.com/product/high-efficiency-led-round-high-bay-lumen-kelvin-field-selectable-sensor-ready/",
+      "costlesslighting.com/product/led-round-high-bay-lumen-kelvin-field-selectable-high-voltage/",
+    ],
   },
   {
-    key: "linear",
+    key: "panels",
     index: "03",
-    name: "Architectural Linears",
-    tagline: "Continuous light as a design language.",
+    name: "Office Panels & Troffers",
+    tagline: "Even, quiet light for the people inside.",
     description:
-      "Suspended, surface and recessed profiles that run seamlessly from lobby to open office, with the glare control specifiers ask for.",
-    applications: ["Office", "Education", "Healthcare"],
+      "Back-lit flat panels and centre-basket troffers that drop straight into the ceiling grid, with field-selectable lumens and Kelvin and optional emergency drivers.",
+    applications: ["Office", "Education", "Healthcare", "Retail"],
     specs: [
-      { label: "UGR", value: "< 19" },
-      { label: "CRI", value: "90+" },
+      { label: "Sizes", value: "2×2 · 2×4" },
+      { label: "Selectable", value: "Lumen & Kelvin" },
+      { label: "Dimming", value: "0–10V" },
+      { label: "Emergency", value: "EM5 – EM13" },
     ],
-    asset: assets.linear,
+    asset: assets.panels,
+    sources: [
+      "costlesslighting.com/product/2x4-led-back-lit-flat-panel-lumen-kelvin-field-selectable/",
+      "costlesslighting.com/product/2x2-led-back-lit-flat-panel-lumen-kelvin-field-selectable/",
+    ],
   },
   {
     key: "vapor-tight",
     index: "04",
     name: "Vapor Tights",
-    tagline: "Sealed for wash-down, dust and freeze.",
+    tagline: "Sealed for wash-down, dust and chemicals.",
     description:
-      "Gasketed housings for food processing, parking structures and cold chain — rated for the places other fixtures fail.",
-    applications: ["Food & bev", "Parking", "Cold chain"],
+      "Polycarbonate housings with stainless steel latches — plus a chemical-resistant acrylic version — for processing plants, car washes and parking structures where open fixtures fail.",
+    applications: ["Processing", "Car washes", "Parking"],
     specs: [
-      { label: "Ingress", value: "IP65 / IP66" },
-      { label: "Ambient", value: "-40° to 50°C" },
+      { label: "Lengths", value: "4 ft · 8 ft" },
+      { label: "Output", value: "5k – 21k lm" },
+      { label: "CCT", value: "3.5K · 4K · 5K" },
+      { label: "Sensor", value: "Screw-in ready" },
     ],
     asset: assets.vaporTight,
+    sources: [
+      "costlesslighting.com/product/vapor-tight-ligh-lumen-fixture-lumen-and-kelvin-field-selectable-sensor-ready/",
+      "costlesslighting.com/product/8-ft-vapor-tight-fixture-lumen-and-kelvin-field-selectable-sensor-ready-9386-to-12716-lumens/",
+      "costlesslighting.com/product/vapor-tight-chemical-resistant-lumen-and-kelvin-field-selectable/",
+    ],
   },
   {
     key: "area",
     index: "05",
-    name: "Area & Stadium",
-    tagline: "Precision floods with zero wasted sky.",
+    name: "Flood, Area & Wall Packs",
+    tagline: "Site lighting with the right throw.",
     description:
-      "Sports floods, area lights and wall packs with asymmetric optics and visor control, modelled pole-by-pole before anything ships.",
-    applications: ["Stadiums", "Parking lots", "Ports", "Campus"],
+      "Multi-purpose area lights with field-selectable lumens, Kelvin and distribution, plus full-cutoff wall packs with integrated photocells — laid out pole-by-pole before anything ships.",
+    applications: ["Parking lots", "Perimeters", "Loading docks", "Campus"],
     specs: [
-      { label: "Output", value: "Up to 160k lm" },
-      { label: "Beam", value: "15° – 60° · Type II–V" },
-      { label: "Surge", value: "10 kV / 20 kV" },
+      { label: "Output", value: "Up to 42.6k lm" },
+      { label: "Optics", value: "Type III · IV · V" },
+      { label: "Mounting", value: "5 options" },
     ],
     asset: assets.area,
+    sources: [
+      "costlesslighting.com/product/multi-purpose-area-light-28342-42653-lumens-lumen-kelvin-distribution-selectable-copy/",
+      "costlesslighting.com/product/led-half-moon-full-cutoff-wall-pack-8165-to-13690-lumens-lumen-kelvin-field-selectable/",
+    ],
   },
 ];
 
@@ -259,10 +287,10 @@ export const testimonial = {
 
 export const CONTENT_TO_VERIFY = [
   "heroMetrics: 60+ suppliers, 30% VE pricing, free shipping",
-  "suites[].specs: lumen ranges, efficacy, IP ratings, ambient ratings, surge",
+  "suites[].specs: taken from supplier listings (see suites[].sources); confirm Glow may publish them. Round high bay '47k lm' comes from the listing description, its variants top out at 35k",
   "promiseRows: lead-time, freight, layout and audit commitments",
   "testimonial: replace placeholder with a real, approved client quote",
   "lib/calculator.ts: indicative per-fixture pricing and sq ft per fixture",
-  "lib/photometrics.ts: fixture lumens / wattages used in the playground",
+  "lib/photometrics.ts: Glow fixture wattages are assumed (~150 lm/W) because the supplier listings do not state watts",
   "site.email / site.phone",
 ];

@@ -139,7 +139,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2 rounded-full border-[0.5px] border-glow-400/30 bg-glow-400/[0.06] px-2.5 py-1 text-glow-300">
               <span className="size-1.5 rounded-full bg-glow-400 shadow-[0_0_8px_rgba(255,196,107,1)]" />
-              Commercial · Industrial · Sports
+              Commercial · Industrial · Site
             </span>
             Specified, sourced &amp; shipped
           </motion.p>
@@ -169,7 +169,7 @@ export function Hero() {
             transition={{ duration: 0.9, ease, delay: 0.4 }}
             className="mt-8 max-w-xl text-pretty text-[17px] leading-relaxed text-ink-dim"
           >
-            Glow engineers the lighting package for warehouses, offices and arenas — then sources it direct from a
+            Glow engineers the lighting package for warehouses, offices and parking lots — then sources it direct from a
             vetted network of global manufacturers. Same photometric performance. A procurement number your owner
             will actually approve.
           </motion.p>

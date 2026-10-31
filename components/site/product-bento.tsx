@@ -21,7 +21,7 @@ type Layout = "feature" | "stack" | "wide";
 const layoutFor: Record<SuiteKey, { layout: Layout; className: string; assetClass: string }> = {
   "high-bay": { layout: "feature", className: "lg:col-span-7 lg:row-span-2", assetClass: "aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[340px]" },
   ufo: { layout: "stack", className: "lg:col-span-5", assetClass: "aspect-[16/9]" },
-  linear: { layout: "stack", className: "lg:col-span-5", assetClass: "aspect-[16/9]" },
+  panels: { layout: "stack", className: "lg:col-span-5", assetClass: "aspect-[16/9]" },
   "vapor-tight": { layout: "stack", className: "lg:col-span-4", assetClass: "aspect-[4/3]" },
   area: { layout: "wide", className: "lg:col-span-8", assetClass: "aspect-[2/1] md:aspect-auto md:h-full" },
 };
@@ -186,10 +186,10 @@ export function ProductBento() {
 
         <div className="mt-4 flex flex-col items-start justify-between gap-4 rounded-[1.5rem] border-[0.5px] border-dashed border-white/12 px-6 py-5 sm:flex-row sm:items-center sm:px-8">
           <p className="text-[14px] text-ink-dim">
-            <span className="text-ink">Not in a suite?</span> Wall packs, troffers, canopies, controls and custom
-            builds are sourced across the supplier network.
+            <span className="text-ink">Not in a suite?</span> Canopy lights, strip lights, recessed cans, LED tubes,
+            exit &amp; emergency, sensors and wiring devices are sourced through the same supplier network.
           </p>
-          <a href="#quote" className="label-mono inline-flex items-center gap-2 text-glow-300 hover:text-glow-200">
+          <a href="#quote" className="label-mono inline-flex shrink-0 items-center gap-2 whitespace-nowrap text-glow-300 hover:text-glow-200">
             Send us a spec <ArrowUpRight className="size-3.5" aria-hidden />
           </a>
         </div>

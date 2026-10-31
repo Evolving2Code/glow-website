@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://glowledlighting.com"),
   title: "Glow LED Lighting — Commercial & Industrial LED, Value-Engineered",
   description:
-    "High bays, UFOs, architectural linears, vapor tights and sports lighting — photometrically engineered and sourced from 60+ global suppliers at up to 30% below typical value-engineering pricing.",
+    "Linear and round high bays, office panels, vapor tights, flood and area lighting — photometrically engineered and sourced from 60+ global suppliers at up to 30% below typical value-engineering pricing.",
   openGraph: {
     title: "Glow LED Lighting",
     description: "Light the floor. Not the budget. Commercial LED lighting, value-engineered.",
