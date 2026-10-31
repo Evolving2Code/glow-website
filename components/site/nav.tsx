@@ -43,6 +43,19 @@ export function Nav() {
   }, []);
 
   React.useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const onResize = () => desktop.matches && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    desktop.addEventListener("change", onResize);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      desktop.removeEventListener("change", onResize);
+    };
+  }, [open]);
+
+  React.useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -50,6 +63,21 @@ export function Nav() {
   }, [open]);
 
   return (
+    <>
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          key="mobile-nav-backdrop"
+          aria-hidden
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.25 }}
+          onClick={() => setOpen(false)}
+          className="fixed inset-0 z-40 bg-surface/85 backdrop-blur-md lg:hidden"
+        />
+      )}
+    </AnimatePresence>
     <motion.header
       initial={false}
       animate={{ y: hidden ? -96 : 0 }}
@@ -59,8 +87,10 @@ export function Nav() {
       <div
         className={cn(
           "mx-auto flex h-14 max-w-[1320px] items-center justify-between gap-4 rounded-full pl-5 pr-2 transition-[background,backdrop-filter,box-shadow,border-color] duration-500",
-          scrolled
-            ? "glass border-[0.5px] border-white/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9),inset_0_0.5px_0_rgba(255,255,255,0.08)]"
+          open
+            ? "border-[0.5px] border-contrast/10 bg-surface-raised shadow-[0_20px_60px_-30px_var(--shadow-strong)]"
+            : scrolled
+            ? "glass border-[0.5px] border-contrast/10 shadow-[0_20px_60px_-30px_var(--shadow-strong),inset_0_0.5px_0_rgba(255,255,255,0.08)]"
             : "border-[0.5px] border-transparent bg-transparent",
         )}
       >
@@ -82,7 +112,7 @@ export function Nav() {
                   {active === l.href && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-0 -z-10 rounded-full bg-white/[0.06] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.1)]"
+                      className="absolute inset-0 -z-10 rounded-full bg-contrast/[0.06] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.1)]"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -105,7 +135,7 @@ export function Nav() {
           </Magnetic>
           <button
             type="button"
-            className="flex size-10 items-center justify-center rounded-full border-[0.5px] border-white/10 text-ink lg:hidden"
+            className="flex size-10 items-center justify-center rounded-full border-[0.5px] border-contrast/10 text-ink lg:hidden"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -124,10 +154,10 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="glass mx-auto mt-2 max-w-[1320px] rounded-3xl border-[0.5px] border-white/10 p-3 lg:hidden"
+            className="mx-auto mt-2 max-h-[calc(100dvh-6rem)] max-w-[1320px] overflow-y-auto rounded-3xl border-[0.5px] border-contrast/10 bg-surface-raised p-3 shadow-[0_30px_80px_-30px_var(--shadow-strong)] lg:hidden"
           >
             <CommandSearch className="mb-2 w-full sm:hidden" />
-            <ul className="divide-y-[0.5px] divide-white/[0.06]">
+            <ul className="divide-y-[0.5px] divide-contrast/[0.06]">
               {navLinks.map((l, i) => (
                 <li key={l.href}>
                   <a
@@ -150,5 +180,6 @@ export function Nav() {
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   );
 }

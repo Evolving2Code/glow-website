@@ -4,7 +4,7 @@ import { Logo } from "./logo";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative overflow-hidden border-t-[0.5px] border-white/10 pt-20">
+    <footer className="relative overflow-hidden border-t-[0.5px] border-contrast/10 pt-20">
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-[420px] bg-[radial-gradient(60%_100%_at_50%_100%,rgba(255,196,107,0.12),transparent)]" />
       <div className="relative mx-auto max-w-[1320px] px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
@@ -17,7 +17,7 @@ export function Footer() {
             {(site.email || site.phone) && (
               <address className="mt-6 space-y-1 not-italic">
                 {site.email && (
-                  <a href={`mailto:${site.email}`} className="block text-[14px] text-ink hover:text-glow-300">
+                  <a href={`mailto:${site.email}`} className="block text-[14px] text-ink hover:text-accent">
                     {site.email}
                   </a>
                 )}
@@ -52,7 +52,7 @@ export function Footer() {
                 </li>
               ))}
               <li>
-                <a href="#quote" className="text-[14px] text-glow-300 hover:text-glow-200">
+                <a href="#quote" className="text-[14px] text-accent hover:text-accent">
                   Request a Quote
                 </a>
               </li>
@@ -70,12 +70,12 @@ export function Footer() {
 
         <p
           aria-hidden
-          className="font-display pointer-events-none mt-20 select-none bg-gradient-to-b from-white/[0.09] to-transparent bg-clip-text text-center text-[22vw] font-semibold leading-[0.75] tracking-[-0.07em] text-transparent lg:text-[17rem]"
+          className="font-display pointer-events-none mt-20 select-none bg-gradient-to-b from-contrast/[0.09] to-transparent bg-clip-text text-center text-[22vw] font-semibold leading-[0.75] tracking-[-0.07em] text-transparent lg:text-[17rem]"
         >
           GLOW
         </p>
 
-        <div className="relative flex flex-col gap-3 border-t-[0.5px] border-white/10 py-6 text-[12px] text-steel-500 sm:flex-row sm:justify-between">
+        <div className="relative flex flex-col gap-3 border-t-[0.5px] border-contrast/10 py-6 text-[12px] text-steel-500 sm:flex-row sm:justify-between">
           <p>© {year} {site.name}. All rights reserved.</p>
           <p className="font-mono">{site.domain}</p>
         </div>
