@@ -80,7 +80,7 @@
   --steel-800: #e6e7eb;
   --shadow-strong: rgba(24, 26, 38, 0.16);
   --shadow-soft: rgba(24, 26, 38, 0.08);
-  --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(249, 249, 251, 0.7));
+  --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(249, 249, 251, 0.84));
   --grid-line: rgba(13, 13, 17, 0.045);
   --glow-gradient: linear-gradient(100deg, #f2a73c 0%, #d4861b 45%, #a8650c 100%);
   --hairline: rgba(13, 13, 17, 0.1);
@@ -192,6 +192,11 @@
     background: var(--glass-bg);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass {
+      background: var(--surface-raised);
+    }
   }
 
   /* Pointer-tracked luminance used by bento nodes and panels */
