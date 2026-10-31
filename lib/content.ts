@@ -65,7 +65,8 @@ export const assets = {
     lighting: "Bright, even studio light from a large overhead softbox, soft contact shadow beneath, lens glowing 4000K",
     subject: "Fixture at 3/4 elevation, 30° tilt, lens facing camera",
     fit: "contain",
-    src: undefined,
+    src: "/assets/products/linear-high-bay.jpg",
+    notes: "Supplier photo from costlesslighting.com, used as a stand-in until Costless confirms usage or a Flow render replaces it.",
     alt: "Glow linear high bay fixture",
   },
   ufo: {
@@ -77,7 +78,8 @@ export const assets = {
     lighting: "Same camera and lighting as P-01 for a matched set",
     subject: "Round UFO, hook mount visible, 3/4 underside showing optic",
     fit: "contain",
-    src: undefined,
+    src: "/assets/products/round-high-bay.jpg",
+    notes: "Supplier photo from costlesslighting.com, used as a stand-in until Costless confirms usage or a Flow render replaces it.",
     alt: "Glow UFO high bay fixture",
   },
   panels: {
@@ -100,7 +102,8 @@ export const assets = {
     lighting: "Matched to P-01; subtle water beading on the lens is welcome",
     subject: "Full-length fixture at 15° tilt, gasketed end cap visible",
     fit: "contain",
-    src: undefined,
+    src: "/assets/products/vapor-tight.jpg",
+    notes: "Supplier photo from costlesslighting.com, used as a stand-in until Costless confirms usage or a Flow render replaces it.",
     alt: "Glow vapor tight fixture",
   },
   area: {
@@ -296,4 +299,5 @@ export const CONTENT_TO_VERIFY = [
   "lib/calculator.ts: indicative per-fixture pricing and sq ft per fixture",
   "lib/photometrics.ts: Glow fixture wattages are assumed (~150 lm/W) because the supplier listings do not state watts",
   "site.email / site.phone",
+  "P-01, P-02, P-04 product photos are Costless Lighting's own images: get written permission to publish them, or replace with Flow renders",
 ];
