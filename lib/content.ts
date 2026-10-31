@@ -52,7 +52,7 @@ export const assets = {
     lighting: "Bright, high-key and daylight-balanced: the whole interior evenly lit by Glow high bays at 4000K, clean whites, soft natural fill from clerestory windows, no dark corners or blown highlights.",
     subject: "One-point perspective down a main aisle of a 30–40 ft clear-height warehouse with white racking and a light polished concrete floor reflecting the fixture rows. No people, no visible brand signage.",
     notes: "Leave the lower-left 40% calm — UI readouts overlay it.",
-    src: undefined,
+    src: "/assets/hero-warehouse.jpg",
     video: undefined,
     alt: "Warehouse aisle lit by Glow LED high bay fixtures",
   },
