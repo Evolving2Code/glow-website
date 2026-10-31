@@ -88,8 +88,8 @@ export const assets = {
     format: "AVIF/WebP photograph",
     lighting: "Daytime, bright and even: 2×4 back-lit panels on at 4000K, daylight through the windows, no harsh contrast",
     subject: "Open-plan office with a light ceiling grid of flat panels, white and light-oak finishes, long lens, ceiling plane dominant",
-    src: undefined,
-    alt: "Glow back-lit flat panels in an office ceiling",
+    src: "/assets/office-panels.jpg",
+    alt: "Open-plan office lit by back-lit LED flat panels",
   },
   vaporTight: {
     id: "P-04",
@@ -111,8 +111,8 @@ export const assets = {
     format: "AVIF/WebP photograph",
     lighting: "Blue hour: the sky still a bright, saturated blue, the lot brightly and evenly lit by full-cutoff area lights at 4000K",
     subject: "Pole-top area light in the foreground, evenly lit lot falling away behind",
-    src: undefined,
-    alt: "Parking lot lit by Glow LED area lights",
+    src: "/assets/area-parking-lot.jpg",
+    alt: "Parking lot at dusk lit by pole-mounted LED area lights",
   },
   caseStudy: {
     id: "C-01",
@@ -122,8 +122,8 @@ export const assets = {
     format: "AVIF/WebP photograph",
     lighting: "As-built, all Glow fixtures on, bright and evenly exposed, true-to-life whites",
     subject: "The facility behind the testimonial quote, wide establishing shot",
-    src: undefined,
-    alt: "Completed Glow LED lighting retrofit",
+    src: "/assets/case-study-manufacturing.jpg",
+    alt: "Manufacturing floor evenly lit by linear LED high bays",
   },
 } satisfies Record<string, AssetSpec>;
 
