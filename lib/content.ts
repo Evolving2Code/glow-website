@@ -36,6 +36,8 @@ export type AssetSpec = {
   notes?: string;
   src?: string;
   alt?: string;
+  /** "contain" keeps a product cutout whole on a white plate instead of cropping it. */
+  fit?: "cover" | "contain";
   /** Looping background video. Takes precedence over `src`, which is used as the poster if `video.poster` is unset. */
   video?: { mp4: string; webm?: string; poster?: string };
 };
@@ -47,10 +49,8 @@ export const assets = {
     width: 2400,
     height: 3000,
     format: "AVIF/WebP still, or 8s seamless MP4 loop (H.264, ≤ 6 MB) + poster frame",
-    lighting:
-      "Blue-hour or night exterior darkness, interior lit only by Glow high bays at 4000K. Deep blacks, no blown highlights on lenses.",
-    subject:
-      "One-point perspective down a main aisle of a 30–40 ft clear-height warehouse. Polished concrete floor reflecting the fixture rows. No people, no visible brand signage.",
+    lighting: "Bright, high-key and daylight-balanced: the whole interior evenly lit by Glow high bays at 4000K, clean whites, soft natural fill from clerestory windows, no dark corners or blown highlights.",
+    subject: "One-point perspective down a main aisle of a 30–40 ft clear-height warehouse with white racking and a light polished concrete floor reflecting the fixture rows. No people, no visible brand signage.",
     notes: "Leave the lower-left 40% calm — UI readouts overlay it.",
     src: undefined,
     video: undefined,
@@ -61,9 +61,10 @@ export const assets = {
     title: "Linear high bay — studio render",
     width: 1600,
     height: 1200,
-    format: "WebP/PNG on near-black seamless (#0D0D11) — no transparency needed",
-    lighting: "Single soft key from top-left, lens emitting 4000K, dark seamless background",
+    format: "WebP/PNG on pure white or very light grey seamless (#F4F4F6) — supplier cutouts work as-is",
+    lighting: "Bright, even studio light from a large overhead softbox, soft contact shadow beneath, lens glowing 4000K",
     subject: "Fixture at 3/4 elevation, 30° tilt, lens facing camera",
+    fit: "contain",
     src: undefined,
     alt: "Glow linear high bay fixture",
   },
@@ -72,9 +73,10 @@ export const assets = {
     title: "UFO high bay — studio render",
     width: 1600,
     height: 900,
-    format: "WebP/PNG on near-black seamless (#0D0D11) — no transparency needed",
-    lighting: "Same camera + key light as P-01 for a matched set",
+    format: "WebP/PNG on pure white or very light grey seamless (#F4F4F6) — supplier cutouts work as-is",
+    lighting: "Same camera and lighting as P-01 for a matched set",
     subject: "Round UFO, hook mount visible, 3/4 underside showing optic",
+    fit: "contain",
     src: undefined,
     alt: "Glow UFO high bay fixture",
   },
@@ -84,8 +86,8 @@ export const assets = {
     width: 1600,
     height: 900,
     format: "AVIF/WebP photograph",
-    lighting: "Back-lit 2×4 flat panels on, even 4000K, dusk outside the windows",
-    subject: "Open-plan office ceiling grid of flat panels, long lens, ceiling plane dominant",
+    lighting: "Daytime, bright and even: 2×4 back-lit panels on at 4000K, daylight through the windows, no harsh contrast",
+    subject: "Open-plan office with a light ceiling grid of flat panels, white and light-oak finishes, long lens, ceiling plane dominant",
     src: undefined,
     alt: "Glow back-lit flat panels in an office ceiling",
   },
@@ -94,19 +96,20 @@ export const assets = {
     title: "Vapor tight — studio render",
     width: 1600,
     height: 1200,
-    format: "WebP/PNG on near-black seamless (#0D0D11) — no transparency needed",
-    lighting: "Matched to P-01; subtle water beading on lens is welcome",
+    format: "WebP/PNG on pure white or very light grey seamless (#F4F4F6) — supplier cutouts work as-is",
+    lighting: "Matched to P-01; subtle water beading on the lens is welcome",
     subject: "Full-length fixture at 15° tilt, gasketed end cap visible",
+    fit: "contain",
     src: undefined,
     alt: "Glow vapor tight fixture",
   },
   area: {
     id: "P-05",
-    title: "Area lighting — parking lot at night",
+    title: "Area lighting — parking lot at blue hour",
     width: 2000,
     height: 2000,
     format: "AVIF/WebP photograph",
-    lighting: "Night, lot lit by pole-mounted area lights, crisp full-cutoff (no sky glow)",
+    lighting: "Blue hour: the sky still a bright, saturated blue, the lot brightly and evenly lit by full-cutoff area lights at 4000K",
     subject: "Pole-top area light in the foreground, evenly lit lot falling away behind",
     src: undefined,
     alt: "Parking lot lit by Glow LED area lights",
@@ -117,7 +120,7 @@ export const assets = {
     width: 1600,
     height: 2000,
     format: "AVIF/WebP photograph",
-    lighting: "As-built, all Glow fixtures on, natural exposure",
+    lighting: "As-built, all Glow fixtures on, bright and evenly exposed, true-to-life whites",
     subject: "The facility behind the testimonial quote, wide establishing shot",
     src: undefined,
     alt: "Completed Glow LED lighting retrofit",

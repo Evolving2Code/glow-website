@@ -43,7 +43,7 @@ function HeroVisual() {
         aria-hidden
         className="absolute -inset-10 -z-10 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(255,196,107,0.22),transparent)] blur-2xl"
       />
-      <div className="relative overflow-hidden rounded-[1.75rem] border-[0.5px] border-white/12 bg-obsidian-950 shadow-[0_60px_140px_-40px_rgba(0,0,0,0.95),inset_0_0.5px_0_rgba(255,255,255,0.1)]">
+      <div className="relative overflow-hidden rounded-[1.75rem] border-[0.5px] border-contrast/12 bg-surface-sunken shadow-[0_60px_140px_-40px_var(--shadow-strong),inset_0_0.5px_0_rgba(255,255,255,0.1)]">
         <AssetSlot spec={assets.hero} priority sizes="(min-width: 1024px) 46vw, 100vw" className="aspect-[4/5] w-full rounded-[1.75rem]" captionAlign="top">
           <motion.div aria-hidden className="pointer-events-none absolute inset-0 mix-blend-screen" style={{ backgroundImage: beam }} />
           <motion.div aria-hidden className="pointer-events-none absolute inset-0 mix-blend-screen" style={{ backgroundImage: glint }} />
@@ -56,11 +56,11 @@ function HeroVisual() {
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease, delay: 0.9 }}
-        className="glass absolute -left-4 bottom-8 hidden w-64 rounded-2xl border-[0.5px] border-white/12 p-4 shadow-[0_30px_80px_-30px_rgba(0,0,0,0.9)] sm:block lg:-left-14"
+        className="glass absolute -left-4 bottom-8 hidden w-64 rounded-2xl border-[0.5px] border-contrast/12 p-4 shadow-[0_30px_80px_-30px_var(--shadow-strong)] sm:block lg:-left-14"
       >
         <div className="flex items-center justify-between">
           <span className="label-mono text-steel-400">Aisle model</span>
-          <span className="label-mono flex items-center gap-1.5 text-glow-300">
+          <span className="label-mono flex items-center gap-1.5 text-accent">
             <span className="size-1.5 animate-pulse-glow rounded-full bg-glow-400" /> Live
           </span>
         </div>
@@ -73,7 +73,7 @@ function HeroVisual() {
           />
           <span className="text-sm text-steel-400">fc avg</span>
         </p>
-        <dl className="mt-3 grid grid-cols-3 gap-2 border-t-[0.5px] border-white/10 pt-3 font-mono text-[11px]">
+        <dl className="mt-3 grid grid-cols-3 gap-2 border-t-[0.5px] border-contrast/10 pt-3 font-mono text-[11px]">
           <div>
             <dt className="text-steel-500">CCT</dt>
             <dd className="mt-0.5 text-ink">4000K</dd>
@@ -93,9 +93,9 @@ function HeroVisual() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.9, ease, delay: 1.1 }}
-        className="glass absolute -right-3 bottom-40 hidden items-center gap-3 rounded-full border-[0.5px] border-white/12 py-2 pl-2 pr-4 md:flex lg:-right-6"
+        className="glass absolute -right-3 bottom-40 hidden items-center gap-3 rounded-full border-[0.5px] border-contrast/12 py-2 pl-2 pr-4 md:flex lg:-right-6"
       >
-        <span className="flex size-7 items-center justify-center rounded-full bg-glow-400/15 font-mono text-[10px] text-glow-300">
+        <span className="flex size-7 items-center justify-center rounded-full bg-glow-400/15 font-mono text-[10px] text-accent">
           −56%
         </span>
         <span className="text-[12px] leading-tight text-ink-dim">
@@ -117,7 +117,7 @@ export function Hero() {
           initial={{ scaleX: 0, opacity: 0 }}
           animate={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 1.6, ease }}
-          className="absolute left-1/2 top-0 h-px w-[92%] -translate-x-1/2 bg-gradient-to-r from-transparent via-glow-100 to-transparent"
+          className="absolute left-1/2 top-0 h-px w-[92%] -translate-x-1/2 bg-gradient-to-r from-transparent via-glow-500/70 to-transparent"
         />
         <motion.div
           initial={{ opacity: 0 }}
@@ -137,7 +137,7 @@ export function Hero() {
             transition={{ duration: 0.8, ease }}
             className="label-mono flex flex-wrap items-center gap-x-3 gap-y-2 text-steel-400"
           >
-            <span className="inline-flex items-center gap-2 rounded-full border-[0.5px] border-glow-400/30 bg-glow-400/[0.06] px-2.5 py-1 text-glow-300">
+            <span className="inline-flex items-center gap-2 rounded-full border-[0.5px] border-glow-400/30 bg-glow-400/[0.06] px-2.5 py-1 text-accent">
               <span className="size-1.5 rounded-full bg-glow-400 shadow-[0_0_8px_rgba(255,196,107,1)]" />
               Commercial · Industrial · Site
             </span>
@@ -200,19 +200,19 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, ease, delay: 0.7 }}
-            className="mt-auto grid grid-cols-2 border-t-[0.5px] border-white/10 pt-0 sm:grid-cols-4 lg:mt-20"
+            className="mt-auto grid grid-cols-2 border-t-[0.5px] border-contrast/10 pt-0 sm:grid-cols-4 lg:mt-20"
           >
             {heroMetrics.map((m, i) => (
               <div
                 key={m.label}
-                className="relative border-white/10 py-6 pr-4 [&:nth-child(2n)]:pl-5 sm:[&:not(:first-child)]:border-l-[0.5px] sm:[&:not(:first-child)]:pl-5 max-sm:[&:nth-child(2n)]:border-l-[0.5px] max-sm:[&:nth-child(n+3)]:border-t-[0.5px]"
+                className="relative border-contrast/10 py-6 pr-4 [&:nth-child(2n)]:pl-5 sm:[&:not(:first-child)]:border-l-[0.5px] sm:[&:not(:first-child)]:pl-5 max-sm:[&:nth-child(2n)]:border-l-[0.5px] max-sm:[&:nth-child(n+3)]:border-t-[0.5px]"
               >
                 <dt className="label-mono text-steel-500">{m.label}</dt>
                 <dd className="mt-3">
                   <span className="font-display block text-[2.6rem] font-medium leading-none tracking-[-0.05em] text-ink tabular">
                     {"prefix" in m && m.prefix}
                     <AnimatedNumber value={m.value} startOnView duration={1.6 + i * 0.15} />
-                    {"suffix" in m && <span className="text-glow-400">{m.suffix}</span>}
+                    {"suffix" in m && <span className="text-accent">{m.suffix}</span>}
                   </span>
                   <span className="mt-2 block text-[12.5px] leading-snug text-steel-400">{m.detail}</span>
                 </dd>

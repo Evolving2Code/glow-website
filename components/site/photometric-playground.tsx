@@ -127,10 +127,10 @@ function Heatmap({ grid, scaleMax, fixtures, aspect, showFixtures }: HeatmapProp
         ))}
       {hover && (
         <>
-          <span aria-hidden className="pointer-events-none absolute inset-y-0 w-px bg-white/30" style={{ left: `${hover.x * 100}%` }} />
-          <span aria-hidden className="pointer-events-none absolute inset-x-0 h-px bg-white/30" style={{ top: `${hover.y * 100}%` }} />
+          <span aria-hidden className="pointer-events-none absolute inset-y-0 w-px bg-contrast/30" style={{ left: `${hover.x * 100}%` }} />
+          <span aria-hidden className="pointer-events-none absolute inset-x-0 h-px bg-contrast/30" style={{ top: `${hover.y * 100}%` }} />
           <div
-            className="glass pointer-events-none absolute z-10 rounded-lg border-[0.5px] border-white/15 px-3 py-2 font-mono text-[11px] shadow-xl"
+            className="glass pointer-events-none absolute z-10 rounded-lg border-[0.5px] border-contrast/15 px-3 py-2 font-mono text-[11px] shadow-xl"
             style={{
               left: `${hover.x * 100}%`,
               top: `${hover.y * 100}%`,
@@ -153,7 +153,7 @@ function Delta({ from, to, invert = false, unit = "%" }: { from: number; to: num
     <span
       className={cn(
         "label-mono !tracking-[0.08em] rounded-full px-1.5 py-0.5 tabular",
-        good ? "bg-glow-400/12 text-glow-300" : "bg-white/[0.05] text-steel-400",
+        good ? "bg-glow-400/12 text-accent" : "bg-contrast/[0.05] text-steel-400",
       )}
     >
       {pct > 0 ? "+" : "−"}
@@ -232,12 +232,12 @@ export function PhotometricPlayground() {
           ref={spot.ref}
           onPointerMove={spot.onPointerMove}
           onPointerLeave={spot.onPointerLeave}
-          className="spotlight mt-14 grid overflow-hidden rounded-[1.75rem] border-[0.5px] border-white/10 bg-obsidian-850/60 shadow-[0_50px_120px_-50px_rgba(0,0,0,0.9)] lg:mt-20 lg:grid-cols-12"
+          className="theme-dark spotlight mt-14 grid overflow-hidden rounded-[1.75rem] border-[0.5px] border-contrast/10 bg-surface-raised shadow-[0_50px_120px_-50px_var(--shadow-strong)] lg:mt-20 lg:grid-cols-12"
         >
           {/* Plan view */}
-          <div className="relative border-white/10 p-4 sm:p-6 lg:col-span-8 lg:border-r-[0.5px] lg:p-8">
+          <div className="relative border-contrast/10 p-4 sm:p-6 lg:col-span-8 lg:border-r-[0.5px] lg:p-8">
             <div className="flex flex-wrap items-center justify-between gap-4">
-              <div role="tablist" aria-label="Space type" className="relative flex rounded-full border-[0.5px] border-white/10 bg-obsidian-950/60 p-1">
+              <div role="tablist" aria-label="Space type" className="relative flex rounded-full border-[0.5px] border-contrast/10 bg-surface-sunken/60 p-1">
                 {spaceKeys.map((k) => (
                   <button
                     key={k}
@@ -247,7 +247,7 @@ export function PhotometricPlayground() {
                     onClick={() => setSpace(k)}
                     className={cn(
                       "relative rounded-full px-4 py-2 text-[13px] transition-colors sm:px-5",
-                      space === k ? "text-obsidian-950" : "text-steel-400 hover:text-ink",
+                      space === k ? "text-surface" : "text-steel-400 hover:text-ink",
                     )}
                   >
                     {space === k && (
@@ -274,7 +274,7 @@ export function PhotometricPlayground() {
                     "relative h-8 w-[3.75rem] rounded-full border-[0.5px] transition-[background,border-color,box-shadow] duration-500",
                     isGlow
                       ? "border-glow-300/70 bg-glow-400/25 shadow-[0_0_30px_-4px_rgba(255,196,107,0.7)]"
-                      : "border-white/15 bg-obsidian-950",
+                      : "border-contrast/15 bg-surface-sunken",
                   )}
                 >
                   <motion.span
@@ -283,7 +283,7 @@ export function PhotometricPlayground() {
                     transition={{ type: "spring", stiffness: 500, damping: 32 }}
                   />
                 </button>
-                <span className={cn("text-[13px] transition-colors", isGlow ? "text-glow-300" : "text-steel-500")}>Glow</span>
+                <span className={cn("text-[13px] transition-colors", isGlow ? "text-accent" : "text-steel-500")}>Glow</span>
               </div>
             </div>
 
@@ -313,7 +313,7 @@ export function PhotometricPlayground() {
                   type="button"
                   onClick={() => setShowFixtures((v) => !v)}
                   aria-pressed={showFixtures}
-                  className="label-mono shrink-0 whitespace-nowrap rounded-full border-[0.5px] border-white/10 px-2.5 py-1 text-steel-400 hover:text-ink"
+                  className="label-mono shrink-0 whitespace-nowrap rounded-full border-[0.5px] border-contrast/10 px-2.5 py-1 text-steel-400 hover:text-ink"
                 >
                   Heads {showFixtures ? "on" : "off"}
                 </button>
@@ -325,7 +325,7 @@ export function PhotometricPlayground() {
           <div className="flex flex-col p-6 sm:p-8 lg:col-span-4">
             <div className="flex items-center justify-between">
               <p className="label-mono text-steel-500">Readout</p>
-              <p className={cn("label-mono transition-colors", isGlow ? "text-glow-300" : "text-steel-400")}>
+              <p className={cn("label-mono transition-colors", isGlow ? "text-accent" : "text-steel-400")}>
                 {isGlow ? "Glow package" : "As-found"}
               </p>
             </div>
@@ -336,9 +336,9 @@ export function PhotometricPlayground() {
               {s.systems[system].cct}K · CRI {s.systems[system].cri} · {s.systems[system].watts}W system
             </p>
 
-            <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border-[0.5px] border-white/10 bg-white/[0.06] lg:grid-cols-1">
+            <dl className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-2xl border-[0.5px] border-contrast/10 bg-contrast/[0.06] lg:grid-cols-1">
               {metrics.map((m) => (
-                <div key={m.label} className="bg-obsidian-900 p-4 lg:px-5">
+                <div key={m.label} className="bg-surface p-4 lg:px-5">
                   <dt className="label-mono flex items-center justify-between gap-2 text-steel-500">
                     <span>{m.label}</span>
                     <span className="hidden sm:inline">{m.delta}</span>

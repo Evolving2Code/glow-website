@@ -4,10 +4,28 @@
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+
+  /* Semantic, theme-aware colours. Values live on :root (light) and .theme-dark. */
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-ink: var(--ink);
+  --color-ink-dim: var(--ink-dim);
+  --color-contrast: var(--contrast);
+  --color-accent: var(--accent);
+
+  /* Structural slate — scale flips per theme so "steel-400" always means "secondary text". */
+  --color-steel-200: var(--steel-200);
+  --color-steel-300: var(--steel-300);
+  --color-steel-400: var(--steel-400);
+  --color-steel-500: var(--steel-500);
+  --color-steel-600: var(--steel-600);
+  --color-steel-700: var(--steel-700);
+  --color-steel-800: var(--steel-800);
 }
 
 @theme {
-  /* 60 — surfaces */
+  /* Fixed palettes */
   --color-obsidian-950: #08080b;
   --color-obsidian-900: #0d0d11;
   --color-obsidian-850: #111116;
@@ -16,20 +34,6 @@
   --color-concrete-50: #f9f9fb;
   --color-concrete-100: #f1f1f4;
   --color-concrete-200: #e4e4ea;
-
-  /* 30 — structural metallic slate */
-  --color-steel-800: #23252d;
-  --color-steel-700: #2e313b;
-  --color-steel-600: #424653;
-  --color-steel-500: #5e6372;
-  --color-steel-400: #8a909d;
-  --color-steel-300: #b3b8c2;
-  --color-steel-200: #d5d8de;
-
-  /* text */
-  --color-ink: #eef0f4;
-  --color-ink-dim: #a3a8b4;
-  --color-ink-dark: #121318;
 
   /* 10 — 4000K "Glow" accent */
   --color-glow-100: #fff4e2;
@@ -57,13 +61,62 @@
   }
 }
 
+/* Light architectural theme (default) */
+:root {
+  color-scheme: light;
+  --surface: #f9f9fb;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f1f1f4;
+  --ink: #121318;
+  --ink-dim: #4a4f5c;
+  --contrast: #0d0d11;
+  --accent: #9a5f0e;
+  --steel-200: #2b2e37;
+  --steel-300: #3f4350;
+  --steel-400: #5c616e;
+  --steel-500: #848a96;
+  --steel-600: #a9aeb8;
+  --steel-700: #d3d6dc;
+  --steel-800: #e6e7eb;
+  --shadow-strong: rgba(24, 26, 38, 0.16);
+  --shadow-soft: rgba(24, 26, 38, 0.08);
+  --glass-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(249, 249, 251, 0.7));
+  --grid-line: rgba(13, 13, 17, 0.045);
+  --glow-gradient: linear-gradient(100deg, #f2a73c 0%, #d4861b 45%, #a8650c 100%);
+  --hairline: rgba(13, 13, 17, 0.1);
+  --hairline-strong: rgba(13, 13, 17, 0.18);
+  --glow-rgb: 245, 168, 58;
+}
+
+/* Instrument panels: the photometric playground, the quote terminal */
+.theme-dark {
+  color-scheme: dark;
+  color: var(--ink);
+  --surface: #0d0d11;
+  --surface-raised: #111116;
+  --surface-sunken: #08080b;
+  --ink: #eef0f4;
+  --ink-dim: #a3a8b4;
+  --contrast: #ffffff;
+  --accent: #ffd28c;
+  --steel-200: #d5d8de;
+  --steel-300: #b3b8c2;
+  --steel-400: #8a909d;
+  --steel-500: #5e6372;
+  --steel-600: #424653;
+  --steel-700: #2e313b;
+  --steel-800: #23252d;
+  --shadow-strong: rgba(8, 8, 14, 0.45);
+  --shadow-soft: rgba(0, 0, 0, 0.5);
+  --glass-bg: linear-gradient(180deg, rgba(22, 22, 29, 0.72), rgba(13, 13, 17, 0.6));
+  --grid-line: rgba(255, 255, 255, 0.035);
+  --glow-gradient: linear-gradient(100deg, #fff6ea 0%, #ffd28c 42%, #f5a83a 78%, #c97a17 100%);
+  --hairline: rgba(255, 255, 255, 0.09);
+  --hairline-strong: rgba(255, 255, 255, 0.16);
+  --glow-rgb: 255, 196, 107;
+}
+
 @layer base {
-  :root {
-    color-scheme: dark;
-    --hairline: rgba(255, 255, 255, 0.09);
-    --hairline-strong: rgba(255, 255, 255, 0.16);
-    --glow-rgb: 255, 196, 107;
-  }
 
   html {
     scroll-behavior: smooth;
@@ -73,8 +126,8 @@
   }
 
   body {
-    background-color: var(--color-obsidian-900);
-    color: var(--color-ink);
+    background-color: var(--surface);
+    color: var(--ink);
     font-family: var(--font-sans);
     font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-font-smoothing: antialiased;
@@ -84,12 +137,12 @@
   }
 
   ::selection {
-    background: rgba(var(--glow-rgb), 0.28);
-    color: var(--color-glow-100);
+    background: rgba(var(--glow-rgb), 0.3);
+    color: inherit;
   }
 
   :focus-visible {
-    outline: 1.5px solid var(--color-glow-400);
+    outline: 1.5px solid var(--color-glow-500);
     outline-offset: 3px;
     border-radius: 6px;
   }
@@ -129,14 +182,14 @@
   }
 
   .text-glow-gradient {
-    background-image: linear-gradient(100deg, #fff6ea 0%, #ffd28c 42%, #f5a83a 78%, #c97a17 100%);
+    background-image: var(--glow-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
 
   .glass {
-    background: linear-gradient(180deg, rgba(22, 22, 29, 0.72), rgba(13, 13, 17, 0.6));
+    background: var(--glass-bg);
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
   }
@@ -157,7 +210,7 @@
     transition: opacity 400ms ease;
     background: radial-gradient(
       520px circle at var(--spot-x, 50%) var(--spot-y, 50%),
-      rgba(var(--glow-rgb), 0.11),
+      rgba(var(--glow-rgb), 0.12),
       transparent 42%
     );
   }
@@ -186,8 +239,8 @@
 
   .blueprint-grid {
     background-image:
-      linear-gradient(to right, rgba(255, 255, 255, 0.035) 0.5px, transparent 0.5px),
-      linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 0.5px, transparent 0.5px);
+      linear-gradient(to right, var(--grid-line) 0.5px, transparent 0.5px),
+      linear-gradient(to bottom, var(--grid-line) 0.5px, transparent 0.5px);
     background-size: 32px 32px;
   }
 

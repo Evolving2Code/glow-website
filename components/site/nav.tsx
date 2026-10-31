@@ -60,7 +60,7 @@ export function Nav() {
         className={cn(
           "mx-auto flex h-14 max-w-[1320px] items-center justify-between gap-4 rounded-full pl-5 pr-2 transition-[background,backdrop-filter,box-shadow,border-color] duration-500",
           scrolled
-            ? "glass border-[0.5px] border-white/10 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9),inset_0_0.5px_0_rgba(255,255,255,0.08)]"
+            ? "glass border-[0.5px] border-contrast/10 shadow-[0_20px_60px_-30px_var(--shadow-strong),inset_0_0.5px_0_rgba(255,255,255,0.08)]"
             : "border-[0.5px] border-transparent bg-transparent",
         )}
       >
@@ -82,7 +82,7 @@ export function Nav() {
                   {active === l.href && (
                     <motion.span
                       layoutId="nav-active"
-                      className="absolute inset-0 -z-10 rounded-full bg-white/[0.06] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.1)]"
+                      className="absolute inset-0 -z-10 rounded-full bg-contrast/[0.06] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.1)]"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -105,7 +105,7 @@ export function Nav() {
           </Magnetic>
           <button
             type="button"
-            className="flex size-10 items-center justify-center rounded-full border-[0.5px] border-white/10 text-ink lg:hidden"
+            className="flex size-10 items-center justify-center rounded-full border-[0.5px] border-contrast/10 text-ink lg:hidden"
             onClick={() => setOpen((o) => !o)}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -124,10 +124,10 @@ export function Nav() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="glass mx-auto mt-2 max-w-[1320px] rounded-3xl border-[0.5px] border-white/10 p-3 lg:hidden"
+            className="glass mx-auto mt-2 max-w-[1320px] rounded-3xl border-[0.5px] border-contrast/10 p-3 lg:hidden"
           >
             <CommandSearch className="mb-2 w-full sm:hidden" />
-            <ul className="divide-y-[0.5px] divide-white/[0.06]">
+            <ul className="divide-y-[0.5px] divide-contrast/[0.06]">
               {navLinks.map((l, i) => (
                 <li key={l.href}>
                   <a

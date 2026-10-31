@@ -82,7 +82,7 @@ export function CommandSearch({ className }: { className?: string }) {
         <button
           type="button"
           className={cn(
-            "group flex h-9 items-center gap-2.5 rounded-full border-[0.5px] border-white/10 bg-white/[0.03] pl-3 pr-1.5 text-[13px] text-steel-400 transition-colors hover:border-white/20 hover:text-ink",
+            "group flex h-9 items-center gap-2.5 rounded-full border-[0.5px] border-contrast/10 bg-contrast/[0.03] pl-3 pr-1.5 text-[13px] text-steel-400 transition-colors hover:border-contrast/20 hover:text-ink",
             className,
           )}
           aria-label="Search products and specs"
@@ -90,21 +90,21 @@ export function CommandSearch({ className }: { className?: string }) {
           <Search className="size-3.5" aria-hidden />
           <span className="hidden xl:inline">Search fixtures, specs, applications</span>
           <span className="xl:hidden">Search</span>
-          <kbd className="ml-2 hidden rounded-full border-[0.5px] border-white/10 bg-white/[0.04] px-2 py-0.5 font-mono text-[10px] text-steel-400 sm:inline">
+          <kbd className="ml-2 hidden rounded-full border-[0.5px] border-contrast/10 bg-contrast/[0.04] px-2 py-0.5 font-mono text-[10px] text-steel-400 sm:inline">
             ⌘K
           </kbd>
         </button>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-[60] bg-obsidian-950/70 backdrop-blur-sm" />
+        <Dialog.Overlay className="fixed inset-0 z-[60] bg-surface-sunken/70 backdrop-blur-sm" />
         <Dialog.Content
-          className="glass fixed left-1/2 top-[12vh] z-[61] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 overflow-hidden rounded-2xl border-[0.5px] border-white/15 shadow-[0_40px_120px_-20px_rgba(0,0,0,0.9),0_0_80px_-30px_rgba(255,196,107,0.35)]"
+          className="glass fixed left-1/2 top-[12vh] z-[61] w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 overflow-hidden rounded-2xl border-[0.5px] border-contrast/15 shadow-[0_40px_120px_-20px_var(--shadow-strong),0_0_80px_-30px_rgba(255,196,107,0.35)]"
           onKeyDown={onListKey}
         >
           <Dialog.Title className="sr-only">Search Glow LED Lighting</Dialog.Title>
           <Dialog.Description className="sr-only">Search product suites, tools and company information.</Dialog.Description>
-          <div className="flex items-center gap-3 border-b-[0.5px] border-white/10 px-5">
-            <Search className="size-4 text-glow-400" aria-hidden />
+          <div className="flex items-center gap-3 border-b-[0.5px] border-contrast/10 px-5">
+            <Search className="size-4 text-accent" aria-hidden />
             <input
               autoFocus
               value={query}
@@ -116,13 +116,13 @@ export function CommandSearch({ className }: { className?: string }) {
               aria-controls="search-results"
               aria-activedescendant={results[active] ? `search-${results[active].id}` : undefined}
             />
-            <kbd className="rounded border-[0.5px] border-white/10 px-1.5 py-0.5 font-mono text-[10px] text-steel-500">ESC</kbd>
+            <kbd className="rounded border-[0.5px] border-contrast/10 px-1.5 py-0.5 font-mono text-[10px] text-steel-500">ESC</kbd>
           </div>
           <ul id="search-results" role="listbox" className="max-h-[52vh] overflow-y-auto p-2">
             {results.length === 0 && (
               <li className="px-4 py-10 text-center text-sm text-steel-400">
                 No match. Our engineers source beyond the catalogue —{" "}
-                <button className="text-glow-300 underline-offset-4 hover:underline" onClick={() => go(entries[entries.length - 1])}>
+                <button className="text-accent underline-offset-4 hover:underline" onClick={() => go(entries[entries.length - 1])}>
                   ask for a spec
                 </button>
                 .
@@ -142,7 +142,7 @@ export function CommandSearch({ className }: { className?: string }) {
                     onClick={() => go(r)}
                     className={cn(
                       "flex cursor-pointer items-center justify-between gap-4 rounded-xl px-3 py-2.5 transition-colors",
-                      i === active ? "bg-white/[0.06]" : "",
+                      i === active ? "bg-contrast/[0.06]" : "",
                     )}
                   >
                     <span className="min-w-0">
@@ -150,7 +150,7 @@ export function CommandSearch({ className }: { className?: string }) {
                       <span className="block truncate font-mono text-[11px] text-steel-500">{r.hint}</span>
                     </span>
                     {i === active ? (
-                      <CornerDownLeft className="size-3.5 shrink-0 text-glow-400" aria-hidden />
+                      <CornerDownLeft className="size-3.5 shrink-0 text-accent" aria-hidden />
                     ) : (
                       <ArrowUpRight className="size-3.5 shrink-0 text-steel-600" aria-hidden />
                     )}
