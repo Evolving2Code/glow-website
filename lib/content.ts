@@ -67,8 +67,8 @@ export const assets = {
   ufo: {
     id: "P-02",
     title: "UFO high bay — studio render",
-    width: 1200,
-    height: 1200,
+    width: 1600,
+    height: 900,
     format: "WebP/PNG on near-black seamless (#0D0D11) — no transparency needed",
     lighting: "Same camera + key light as P-01 for a matched set",
     subject: "Round UFO, hook mount visible, 3/4 underside showing optic",
@@ -89,7 +89,7 @@ export const assets = {
   vaporTight: {
     id: "P-04",
     title: "Vapor tight — studio render",
-    width: 1200,
+    width: 1600,
     height: 1200,
     format: "WebP/PNG on near-black seamless (#0D0D11) — no transparency needed",
     lighting: "Matched to P-01; subtle water beading on lens is welcome",
@@ -101,7 +101,7 @@ export const assets = {
     id: "P-05",
     title: "Sports & area — night project photo",
     width: 2000,
-    height: 1000,
+    height: 2000,
     format: "AVIF/WebP photograph",
     lighting: "Night, field lit by Glow floods, visible beam control (no sky glow)",
     subject: "Pole-top fixture cluster in the foreground, field falling away behind",
