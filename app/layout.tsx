@@ -1,37 +1,40 @@
 import type { Metadata, Viewport } from "next";
-import { Geist_Mono, Inter, Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 
-const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-space-grotesk", display: "swap" });
-const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const mono = Geist_Mono({ subsets: ["latin"], variable: "--font-geist-mono", display: "swap" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+
+const description =
+  "Commercial LED lighting for warehouses, offices, parking lots and more. Access to 60+ suppliers, VE pricing up to 30% below industry standard, free shipping on almost every order, plus design layouts and audits.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://glowledlighting.com"),
-  title: "Glow LED Lighting — Commercial & Industrial LED, Value-Engineered",
-  description:
-    "Linear and round high bays, office panels, vapor tights, flood and area lighting — photometrically engineered and sourced from 60+ global suppliers at up to 30% below typical value-engineering pricing.",
+  title: "Glow LED Lighting | Commercial LED Solutions",
+  description,
   openGraph: {
-    title: "Glow LED Lighting",
-    description: "Light the floor. Not the budget. Commercial LED lighting, value-engineered.",
+    title: "Glow LED Lighting | Commercial LED Solutions",
+    description,
     url: "https://glowledlighting.com",
     siteName: "Glow LED Lighting",
     type: "website",
+    images: [{ url: "/assets/hero-warehouse-v2.jpg", width: 1792, height: 2400, alt: "Warehouse lit by LED high bays" }],
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#F9F9FB",
-  colorScheme: "light",
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={inter.variable}>
       <body>
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-glow-400 focus:px-4 focus:py-2 focus:text-obsidian-950"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:font-semibold"
         >
           Skip to content
         </a>
