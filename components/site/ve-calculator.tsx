@@ -55,7 +55,7 @@ export function VECalculator() {
 
   return (
     <section id="calculator" aria-labelledby="calculator-title" className="relative overflow-x-clip py-24 lg:py-28">
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-contrast/10 to-transparent" />
       <div className="mx-auto max-w-[1320px] px-5 sm:px-8">
         <SectionHeading
           id="calculator-title"
@@ -75,13 +75,13 @@ export function VECalculator() {
           ref={spot.ref}
           onPointerMove={spot.onPointerMove}
           onPointerLeave={spot.onPointerLeave}
-          className="spotlight mt-14 grid overflow-hidden rounded-[1.75rem] border-[0.5px] border-white/10 bg-obsidian-850/60 lg:mt-20 lg:grid-cols-12"
+          className="spotlight mt-14 grid overflow-hidden rounded-[1.75rem] border-[0.5px] border-contrast/10 bg-surface-raised shadow-[0_40px_100px_-60px_var(--shadow-strong)] lg:mt-20 lg:grid-cols-12"
         >
           {/* Inputs */}
-          <div className="border-white/10 p-6 sm:p-10 lg:col-span-6 lg:border-r-[0.5px]">
+          <div className="border-contrast/10 p-6 sm:p-10 lg:col-span-6 lg:border-r-[0.5px]">
             <fieldset>
               <legend className="label-mono text-steel-500">Size the project by</legend>
-              <div className="mt-4 inline-flex rounded-full border-[0.5px] border-white/10 bg-obsidian-950/60 p-1">
+              <div className="mt-4 inline-flex rounded-full border-[0.5px] border-contrast/10 bg-surface-sunken/60 p-1">
                 {(
                   [
                     ["area", "Square footage"],
@@ -92,7 +92,7 @@ export function VECalculator() {
                     key={k}
                     className={cn(
                       "relative cursor-pointer rounded-full px-4 py-2 text-[13px] transition-colors has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-glow-400",
-                      mode === k ? "text-obsidian-950" : "text-steel-400 hover:text-ink",
+                      mode === k ? "text-surface" : "text-steel-400 hover:text-ink",
                     )}
                   >
                     <input type="radio" name="calc-mode" value={k} checked={mode === k} onChange={() => setMode(k)} className="sr-only" />
@@ -114,8 +114,8 @@ export function VECalculator() {
                     className={cn(
                       "cursor-pointer rounded-full border-[0.5px] px-3.5 py-1.5 text-[13px] transition-all has-[:focus-visible]:outline has-[:focus-visible]:outline-1 has-[:focus-visible]:outline-glow-400",
                       spaceKey === s.key
-                        ? "border-glow-400/60 bg-glow-400/10 text-glow-200 shadow-[0_0_24px_-6px_rgba(255,196,107,0.6)]"
-                        : "border-white/10 text-steel-400 hover:border-white/25 hover:text-ink",
+                        ? "border-glow-400/60 bg-glow-400/10 text-accent shadow-[0_0_24px_-6px_rgba(255,196,107,0.6)]"
+                        : "border-contrast/10 text-steel-400 hover:border-contrast/25 hover:text-ink",
                     )}
                   >
                     <input type="radio" name="calc-space" value={s.key} checked={spaceKey === s.key} onChange={() => setSpaceKey(s.key)} className="sr-only" />
@@ -129,7 +129,7 @@ export function VECalculator() {
               <label htmlFor="calc-value" className="label-mono text-steel-500">
                 {mode === "area" ? "Total floor area" : "Number of fixtures"}
               </label>
-              <div className="mt-3 flex items-baseline gap-3 border-b-[0.5px] border-white/15 pb-3 focus-within:border-glow-400/70">
+              <div className="mt-3 flex items-baseline gap-3 border-b-[0.5px] border-contrast/15 pb-3 focus-within:border-glow-400/70">
                 <input
                   id="calc-value"
                   inputMode="numeric"
@@ -168,7 +168,7 @@ export function VECalculator() {
               </div>
             </div>
 
-            <dl className="mt-12 grid grid-cols-3 gap-4 border-t-[0.5px] border-white/10 pt-6">
+            <dl className="mt-12 grid grid-cols-3 gap-4 border-t-[0.5px] border-contrast/10 pt-6">
               <div>
                 <dt className="label-mono !text-[10px] text-steel-500">{mode === "area" ? "Est. fixtures" : "Est. coverage"}</dt>
                 <dd className="mt-2 font-mono text-[15px] text-ink tabular">
@@ -181,7 +181,7 @@ export function VECalculator() {
               </div>
               <div>
                 <dt className="label-mono !text-[10px] text-steel-500">Glow / unit</dt>
-                <dd className="mt-2 font-mono text-[15px] text-glow-300 tabular">{formatUSD(r.glowUnit)}</dd>
+                <dd className="mt-2 font-mono text-[15px] text-accent tabular">{formatUSD(r.glowUnit)}</dd>
               </div>
             </dl>
             <p className="mt-4 font-mono text-[11px] text-steel-600">Modelled on {space.fixture.toLowerCase()} · {formatInt(space.sqftPerFixture)} ft² per head</p>
@@ -199,7 +199,7 @@ export function VECalculator() {
               />
             </p>
             <p className="relative mt-3 text-[14px] text-ink-dim">
-              Back in the project budget — a straight <span className="text-glow-300">{Math.round(VE_REDUCTION * 100)}%</span> reduction on fixtures, with freight included.
+              Back in the project budget — a straight <span className="text-accent">{Math.round(VE_REDUCTION * 100)}%</span> reduction on fixtures, with freight included.
             </p>
 
             <figure className="relative mt-12" aria-label="Typical package cost compared with Glow package cost">
@@ -209,7 +209,7 @@ export function VECalculator() {
                     <span className="text-[13px] text-steel-400">Typical distributor package</span>
                     <AnimatedNumber value={r.typical} format={formatUSD} className="font-mono text-[14px] text-steel-300 tabular" />
                   </div>
-                  <div className="mt-2.5 h-3 overflow-hidden rounded-[4px] bg-white/[0.04]">
+                  <div className="mt-2.5 h-3 overflow-hidden rounded-[4px] bg-contrast/[0.04]">
                     <motion.div className="h-full rounded-[4px] bg-steel-600" initial={{ width: 0 }} whileInView={{ width: "100%" }} viewport={{ once: true }} transition={{ duration: 1.1, ease }} />
                   </div>
                 </div>
@@ -235,7 +235,7 @@ export function VECalculator() {
                     />
                   </div>
                   <div className="mt-2 flex justify-end">
-                    <span className="label-mono !tracking-[0.1em] text-glow-300" style={{ width: `${VE_REDUCTION * 100}%` }}>
+                    <span className="label-mono !tracking-[0.1em] text-accent" style={{ width: `${VE_REDUCTION * 100}%` }}>
                       −{Math.round(VE_REDUCTION * 100)}% saved
                     </span>
                   </div>
@@ -246,13 +246,13 @@ export function VECalculator() {
               </figcaption>
             </figure>
 
-            <dl className="relative mt-12 grid grid-cols-3 gap-px overflow-hidden rounded-xl border-[0.5px] border-white/10 bg-white/[0.06]">
+            <dl className="relative mt-12 grid grid-cols-3 gap-px overflow-hidden rounded-xl border-[0.5px] border-contrast/10 bg-contrast/[0.06]">
               {[
                 { label: "Per fixture", value: r.savings / r.fixtures, fmt: formatUSD, prefix: "−" },
                 { label: "Per sq ft", value: r.glow / r.sqft, fmt: (n: number) => `$${n.toFixed(2)}`, prefix: "" },
                 { label: "Freight", value: 0, fmt: () => "$0", prefix: "" },
               ].map((m) => (
-                <div key={m.label} className="bg-obsidian-900/95 px-4 py-3.5">
+                <div key={m.label} className="bg-surface/95 px-4 py-3.5">
                   <dt className="label-mono !text-[10px] text-steel-500">{m.label}</dt>
                   <dd className="mt-1.5 font-mono text-[15px] text-ink tabular">
                     {m.prefix}

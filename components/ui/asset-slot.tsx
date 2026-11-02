@@ -33,7 +33,7 @@ function CropMarks() {
 export function AssetSlot({ spec, className, density = "full", priority, sizes = "100vw", children, captionAlign = "spread" }: AssetSlotProps) {
   if (spec.video) {
     return (
-      <div className={cn("relative overflow-hidden bg-obsidian-950", className)}>
+      <div className={cn("relative overflow-hidden bg-surface-sunken", className)}>
         <LoopVideo
           mp4={spec.video.mp4}
           webm={spec.video.webm}
@@ -49,8 +49,15 @@ export function AssetSlot({ spec, className, density = "full", priority, sizes =
 
   if (spec.src) {
     return (
-      <div className={cn("relative overflow-hidden", className)}>
-        <Image src={spec.src} alt={spec.alt ?? ""} fill priority={priority} sizes={sizes} className="object-cover" />
+      <div className={cn("relative overflow-hidden", spec.fit === "contain" && "bg-white", className)}>
+        <Image
+          src={spec.src}
+          alt={spec.alt ?? ""}
+          fill
+          priority={priority}
+          sizes={sizes}
+          className={spec.fit === "contain" ? "object-contain p-6 sm:p-8" : "object-cover"}
+        />
         {children}
       </div>
     );
@@ -61,7 +68,7 @@ export function AssetSlot({ spec, className, density = "full", priority, sizes =
   return (
     <figure
       className={cn(
-        "relative overflow-hidden bg-obsidian-950 blueprint-grid",
+        "relative overflow-hidden bg-surface-sunken blueprint-grid",
         "outline-dashed outline-[0.5px] -outline-offset-[0.5px] outline-glow-400/25",
         className,
       )}
@@ -81,7 +88,7 @@ export function AssetSlot({ spec, className, density = "full", priority, sizes =
           )}
         >
           <div className="flex items-start justify-between gap-4">
-            <span className="label-mono inline-flex items-center gap-2 rounded-full border-[0.5px] border-glow-400/40 bg-glow-400/[0.06] px-2.5 py-1 text-glow-300">
+            <span className="label-mono inline-flex items-center gap-2 rounded-full border-[0.5px] border-glow-400/40 bg-glow-400/[0.06] px-2.5 py-1 text-accent">
               <span className="size-1.5 animate-pulse-glow rounded-full bg-glow-400" />
               Asset required · {spec.id}
             </span>
@@ -114,7 +121,7 @@ export function AssetSlot({ spec, className, density = "full", priority, sizes =
         </figcaption>
       ) : (
         <figcaption className="absolute inset-0 flex flex-col items-center justify-center gap-2 p-4 text-center">
-          <span className="label-mono inline-flex items-center gap-2 text-glow-300/90">
+          <span className="label-mono inline-flex items-center gap-2 text-accent">
             <span className="size-1.5 animate-pulse-glow rounded-full bg-glow-400" />
             {spec.id} · Asset required
           </span>

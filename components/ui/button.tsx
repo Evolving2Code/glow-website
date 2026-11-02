@@ -11,7 +11,7 @@ const buttonVariants = cva(
         glow:
           "bg-glow-400 text-obsidian-950 shadow-[0_0_0_0.5px_rgba(255,214,150,0.9)_inset,0_10px_40px_-8px_rgba(255,180,80,0.65),0_0_80px_-20px_rgba(255,196,107,0.8)] hover:bg-glow-300 hover:shadow-[0_0_0_0.5px_rgba(255,236,200,1)_inset,0_14px_50px_-8px_rgba(255,180,80,0.85),0_0_110px_-20px_rgba(255,196,107,0.95)]",
         ghost:
-          "border-[0.5px] border-white/15 bg-white/[0.03] text-ink hover:border-white/30 hover:bg-white/[0.07]",
+          "border-[0.5px] border-contrast/15 bg-contrast/[0.03] text-ink hover:border-contrast/30 hover:bg-contrast/[0.07]",
         dark:
           "bg-obsidian-900 text-concrete-50 shadow-[0_0_0_0.5px_rgba(255,255,255,0.1)_inset] hover:bg-obsidian-700",
         link: "rounded-none px-0 text-ink-dim underline-offset-4 hover:text-ink hover:underline",

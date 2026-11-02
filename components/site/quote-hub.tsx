@@ -227,9 +227,9 @@ export function QuoteHub() {
           <div
             ref={terminalRef}
             onClick={() => inputRef.current?.focus()}
-            className="relative overflow-hidden rounded-[1.5rem] border-[0.5px] border-white/12 bg-obsidian-950 shadow-[0_50px_120px_-50px_rgba(0,0,0,1),inset_0_0.5px_0_rgba(255,255,255,0.08)] lg:col-span-8"
+            className="theme-dark relative overflow-hidden rounded-[1.5rem] border-[0.5px] border-contrast/12 bg-surface-sunken shadow-[0_50px_120px_-50px_var(--shadow-strong),inset_0_0.5px_0_rgba(255,255,255,0.08)] lg:col-span-8"
           >
-            <div className="flex items-center justify-between border-b-[0.5px] border-white/10 px-5 py-3.5">
+            <div className="flex items-center justify-between border-b-[0.5px] border-contrast/10 px-5 py-3.5">
               <p className="font-mono text-[12px] text-steel-500">
                 glow<span className="text-steel-600">://</span>quote <span className="text-steel-600">—</span> new request
               </p>
@@ -237,13 +237,13 @@ export function QuoteHub() {
                 {done ? "Ready" : `${String(index + 1).padStart(2, "0")} / ${steps.length}`}
               </p>
             </div>
-            <div className="h-px w-full bg-white/[0.04]">
+            <div className="h-px w-full bg-contrast/[0.04]">
               <motion.div className="h-px bg-glow-400 shadow-[0_0_12px_rgba(255,196,107,1)]" animate={{ width: `${progress * 100}%` }} transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }} />
             </div>
 
             <div className="min-h-[440px] p-5 font-mono text-[13px] sm:p-8 sm:text-[14px]">
               <p className="text-steel-500">
-                <span className="text-glow-400">glow</span> Engineering desk online. Let&apos;s scope your project.
+                <span className="text-accent">glow</span> Engineering desk online. Let&apos;s scope your project.
               </p>
 
               <ol className="mt-6 space-y-1.5" aria-label="Answers so far">
@@ -255,7 +255,7 @@ export function QuoteHub() {
                         e.stopPropagation();
                         if (status === "idle" || status === "error") setIndex(i);
                       }}
-                      className="group flex w-full items-baseline gap-3 rounded px-1 py-0.5 text-left transition-colors hover:bg-white/[0.03]"
+                      className="group flex w-full items-baseline gap-3 rounded px-1 py-0.5 text-left transition-colors hover:bg-contrast/[0.03]"
                       aria-label={`Edit ${s.prompt} Current answer: ${displayValue(s, answers[s.key])}`}
                     >
                       <span className="text-glow-500">✓</span>
@@ -278,7 +278,7 @@ export function QuoteHub() {
                     className="mt-8"
                   >
                     <label htmlFor={`q-${step.key}`} className="block text-ink">
-                      <span className="text-glow-400">?</span> {step.prompt}
+                      <span className="text-accent">?</span> {step.prompt}
                       {step.optional && <span className="ml-2 text-steel-600">(optional)</span>}
                     </label>
 
@@ -300,11 +300,11 @@ export function QuoteHub() {
                               className={cn(
                                 "group flex items-center gap-2.5 rounded-lg border-[0.5px] px-3 py-2 text-left font-sans text-[13.5px] transition-all",
                                 selected
-                                  ? "border-glow-400/70 bg-glow-400/10 text-glow-200 shadow-[0_0_20px_-6px_rgba(255,196,107,0.6)]"
-                                  : "border-white/10 text-ink-dim hover:border-white/25 hover:text-ink",
+                                  ? "border-glow-400/70 bg-glow-400/10 text-accent shadow-[0_0_20px_-6px_rgba(255,196,107,0.6)]"
+                                  : "border-contrast/10 text-ink-dim hover:border-contrast/25 hover:text-ink",
                               )}
                             >
-                              <span className={cn("font-mono text-[11px]", selected ? "text-glow-400" : "text-steel-600")}>{i + 1}</span>
+                              <span className={cn("font-mono text-[11px]", selected ? "text-accent" : "text-steel-600")}>{i + 1}</span>
                               {o.label}
                             </button>
                           );
@@ -313,7 +313,7 @@ export function QuoteHub() {
                     )}
 
                     <div className="mt-4 flex items-start gap-3">
-                      <span className="pt-[1px] text-glow-400" aria-hidden>
+                      <span className="pt-[1px] text-accent" aria-hidden>
                         ›
                       </span>
                       {step.type === "textarea" ? (
@@ -382,7 +382,7 @@ export function QuoteHub() {
                             if (step.type === "multi") commit(multi);
                             else submitText();
                           }}
-                          className="ml-auto rounded-md border-[0.5px] border-white/15 px-2.5 py-1 font-sans text-[12px] text-ink-dim hover:border-glow-400/60 hover:text-glow-200"
+                          className="ml-auto rounded-md border-[0.5px] border-contrast/15 px-2.5 py-1 font-sans text-[12px] text-ink-dim hover:border-glow-400/60 hover:text-accent"
                         >
                           {step.optional && !input && multi.length === 0 ? "Skip" : "Continue"}
                         </button>
@@ -393,7 +393,7 @@ export function QuoteHub() {
                   <motion.div key="review" initial={{ opacity: 0, y: 6 }} animate={{ opacity: 1, y: 0 }} className="mt-8">
                     {status === "sent" ? (
                       <div role="status">
-                        <p className="text-glow-300">
+                        <p className="text-accent">
                           ✓ Request <span className="text-ink">{reference}</span> received.
                         </p>
                         <p className="mt-3 max-w-lg font-sans text-[14px] leading-relaxed text-ink-dim">
@@ -407,7 +407,7 @@ export function QuoteHub() {
                     ) : (
                       <div>
                         <p className="text-ink">
-                          <span className="text-glow-400">?</span> Send this request to the engineering desk?
+                          <span className="text-accent">?</span> Send this request to the engineering desk?
                         </p>
                         {status === "error" && (
                           <p className="mt-3 text-[12px] text-red-300" role="alert">
@@ -435,8 +435,8 @@ export function QuoteHub() {
 
           {/* Payload + process */}
           <aside className="flex flex-col gap-4 lg:col-span-4" aria-label="Request summary">
-            <div className="overflow-hidden rounded-[1.5rem] border-[0.5px] border-white/10 bg-obsidian-850/70">
-              <div className="flex items-center justify-between border-b-[0.5px] border-white/10 px-5 py-3.5">
+            <div className="theme-dark overflow-hidden rounded-[1.5rem] border-[0.5px] border-contrast/10 bg-surface-raised">
+              <div className="flex items-center justify-between border-b-[0.5px] border-contrast/10 px-5 py-3.5">
                 <p className="font-mono text-[12px] text-steel-500">request.json</p>
                 <span className="size-1.5 animate-pulse-glow rounded-full bg-glow-400" aria-hidden />
               </div>
@@ -446,7 +446,7 @@ export function QuoteHub() {
                   <span key={k} className="block pl-4">
                     <span className="text-steel-300">&quot;{k}&quot;</span>
                     <span className="text-steel-500">: </span>
-                    <span className={typeof v === "number" ? "text-glow-300" : "text-glow-100"}>{JSON.stringify(v)}</span>
+                    <span className={typeof v === "number" ? "text-accent" : "text-glow-100"}>{JSON.stringify(v)}</span>
                     {i < arr.length - 1 && <span className="text-steel-500">,</span>}
                   </span>
                 ))}
@@ -455,7 +455,7 @@ export function QuoteHub() {
               </pre>
             </div>
 
-            <div className="flex-1 rounded-[1.5rem] border-[0.5px] border-white/10 bg-obsidian-850/70 p-6">
+            <div className="flex-1 rounded-[1.5rem] border-[0.5px] border-contrast/10 bg-surface-raised p-6 shadow-[0_30px_80px_-50px_var(--shadow-strong)]">
               <p className="label-mono text-steel-500">What happens next</p>
               <ol className="mt-6 space-y-6">
                 {[
@@ -464,7 +464,7 @@ export function QuoteHub() {
                   ["Written quote", "Firm pricing, freight included, with a committed ship date."],
                 ].map(([t, d], i) => (
                   <li key={t} className="grid grid-cols-[2rem_1fr] gap-2">
-                    <span className="font-mono text-[12px] text-glow-400">0{i + 1}</span>
+                    <span className="font-mono text-[12px] text-accent">0{i + 1}</span>
                     <span>
                       <span className="block text-[14px] text-ink">{t}</span>
                       <span className="mt-1 block text-[13px] leading-relaxed text-steel-400">{d}</span>

@@ -6,27 +6,22 @@ type SectionHeadingProps = {
   eyebrow: string;
   title: React.ReactNode;
   lede?: React.ReactNode;
-  tone?: "dark" | "light";
   className?: string;
   aside?: React.ReactNode;
 };
 
-export function SectionHeading({ id, index, eyebrow, title, lede, tone = "dark", className, aside }: SectionHeadingProps) {
-  const light = tone === "light";
+export function SectionHeading({ id, index, eyebrow, title, lede, className, aside }: SectionHeadingProps) {
   return (
     <header className={cn("grid gap-8 lg:grid-cols-12 lg:items-end", className)}>
       <div className="lg:col-span-7">
-        <p className={cn("label-mono flex items-center gap-3", light ? "text-steel-500" : "text-steel-400")}>
-          <span className={light ? "text-glow-700" : "text-glow-400"}>§{index}</span>
-          <span className={cn("h-px w-8", light ? "bg-steel-300" : "bg-steel-600")} aria-hidden />
+        <p className="label-mono flex items-center gap-3 text-steel-400">
+          <span className="text-accent">§{index}</span>
+          <span className="h-px w-8 bg-steel-600" aria-hidden />
           {eyebrow}
         </p>
         <h2
           id={id}
-          className={cn(
-            "font-display mt-6 text-balance text-[2.5rem] font-medium leading-[0.98] sm:text-6xl lg:text-[4.25rem]",
-            light ? "text-ink-dark" : "text-ink",
-          )}
+          className="font-display mt-6 text-balance text-[2.5rem] font-medium leading-[0.98] text-ink sm:text-6xl lg:text-[4.25rem]"
         >
           {title}
         </h2>
@@ -34,7 +29,7 @@ export function SectionHeading({ id, index, eyebrow, title, lede, tone = "dark",
       {(lede || aside) && (
         <div className="lg:col-span-5 lg:pb-2">
           {lede && (
-            <p className={cn("max-w-md text-pretty text-base leading-relaxed lg:ml-auto", light ? "text-steel-600" : "text-ink-dim")}>
+            <p className="max-w-md text-pretty text-base leading-relaxed text-ink-dim lg:ml-auto">
               {lede}
             </p>
           )}

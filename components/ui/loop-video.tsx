@@ -107,7 +107,7 @@ export function LoopVideo({ mp4, webm, poster, alt, priority, sizes = "100vw", c
           type="button"
           onClick={toggle}
           aria-label={playing ? "Pause background video" : "Play background video"}
-          className="glass absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-full border-[0.5px] border-white/15 text-ink/80 transition-colors hover:text-ink"
+          className="glass absolute right-4 top-4 z-10 flex size-9 items-center justify-center rounded-full border-[0.5px] border-contrast/15 text-ink/80 transition-colors hover:text-ink"
         >
           {playing ? <Pause className="size-3.5" aria-hidden /> : <Play className="size-3.5" aria-hidden />}
         </button>
