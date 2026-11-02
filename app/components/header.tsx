@@ -34,17 +34,23 @@ export function Header() {
     const onResize = () => window.innerWidth >= 768 && setOpen(false);
     window.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize);
+    // Lock page scroll while the full-screen menu is open.
+    const root = document.documentElement;
+    const prevRoot = root.style.overflow;
+    root.style.overflow = "hidden";
     return () => {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
+      root.style.overflow = prevRoot;
     };
   }, [open]);
 
   return (
+    <>
     <header
-      className={`sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md transition-colors supports-[backdrop-filter]:bg-white/80 ${
-        scrolled || open ? "border-line" : "border-transparent"
-      }`}
+      className={`sticky top-0 z-50 border-b transition-colors ${
+        open ? "bg-white" : "bg-white/90 backdrop-blur-md supports-[backdrop-filter]:bg-white/80"
+      } ${scrolled || open ? "border-line" : "border-transparent"}`}
     >
       <div className="container-x flex h-16 items-center justify-between gap-4">
         <Logo />
@@ -76,23 +82,34 @@ export function Header() {
         </button>
       </div>
 
-      <div id="mobile-menu" hidden={!open} className="border-t border-line bg-white md:hidden">
-        <nav aria-label="Mobile" className="container-x flex flex-col py-3">
-          {nav.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="rounded-lg px-2 py-3 text-base font-medium text-ink-soft hover:bg-soft"
-            >
-              {l.label}
-            </a>
-          ))}
-          <a href="#contact" onClick={() => setOpen(false)} className="btn btn-primary mt-2 w-full">
-            Get a Quote
-          </a>
-        </nav>
-      </div>
     </header>
+
+    {/* Full-screen mobile menu. Sits outside the header so it covers the whole viewport below it. */}
+    <div
+      id="mobile-menu"
+      hidden={!open}
+      className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto overscroll-contain bg-white md:hidden"
+    >
+      <nav aria-label="Mobile" className="container-x flex min-h-full flex-col pb-[max(1.5rem,env(safe-area-inset-bottom))] pt-4">
+        {nav.map((l) => (
+          <a
+            key={l.href}
+            href={l.href}
+            onClick={() => setOpen(false)}
+            className="border-b border-line py-5 text-[1.75rem] font-semibold tracking-tight text-ink active:text-brand-text"
+          >
+            {l.label}
+          </a>
+        ))}
+        <a
+          href="#contact"
+          onClick={() => setOpen(false)}
+          className="btn btn-primary mt-auto min-h-14 w-full text-lg"
+        >
+          Get a Quote
+        </a>
+      </nav>
+    </div>
+    </>
   );
 }
